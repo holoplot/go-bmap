@@ -15,7 +15,8 @@ import (
 func main() {
 	bmapFileFlag := flag.String("bmap", "", "Path to bmap XML file (required)")
 	inputFileFlag := flag.String("input", "", "Path to input data file (required)")
-	outpuFileFlag := flag.String("output", "", "Path to output file or device(required)")
+	outpuFileFlag := flag.String("output", "", "Path to output file or device (required)")
+	skipFlag := flag.Int("skip-bytes", 0, "Number of bytes to skip on the output")
 	flag.Parse()
 
 	if len(*bmapFileFlag) == 0 || len(*inputFileFlag) == 0 || len(*outpuFileFlag) == 0 {
@@ -55,7 +56,8 @@ func main() {
 		panic(err)
 	}
 
-	err = r.WriteTo(outputFile)
+	ow := offsetWriterNew(outputFile, *skipFlag)
+	err = r.WriteTo(ow)
 	if err != nil {
 		panic(err)
 	}
