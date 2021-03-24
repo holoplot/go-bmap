@@ -9,19 +9,21 @@ import (
 )
 
 func testFiles(t *testing.T) {
-	inputFile, err := os.Open("../../test/data/input.bz2")
+	path := "../../test/data"
+
+	inputFile, err := os.Open(path + "/input.bz2")
 	if err != nil {
 		t.Fatalf("open: %v", err)
 	}
 
 	inputReader := bzip2.NewReader(inputFile)
 
-	bmapXML, err := ioutil.ReadFile("../../test/data/input.bmap")
+	bmapXML, err := ioutil.ReadFile(path + "/input.bmap")
 	if err != nil {
 		t.Fatalf("open: %v", err)
 	}
 
-	outputReference, err := ioutil.ReadFile("../../test/data/output.bin")
+	outputReference, err := ioutil.ReadFile(path + "/output.bin")
 	if err != nil {
 		t.Fatalf("open: %v", err)
 	}
