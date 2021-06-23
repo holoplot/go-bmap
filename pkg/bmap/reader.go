@@ -81,7 +81,7 @@ func (r *Reader) WriteTo(output io.WriterAt) error {
 	case "sha256":
 		h = sha256.New()
 	default:
-		return fmt.Errorf("Unsupported checksum type %s", r.xml.ChecksumType)
+		return fmt.Errorf("unsupported checksum type %s", r.xml.ChecksumType)
 	}
 
 	lastBlock := int64(0)
@@ -115,7 +115,7 @@ func (r *Reader) WriteTo(output io.WriterAt) error {
 
 		sum := hex.EncodeToString(h.Sum(nil))
 		if sum != rng.Chksum {
-			return fmt.Errorf("Checkum mismatch for blocks %d-%d: got %s, expected %s", rng.blockStart, rng.blockEnd, sum, rng.Chksum)
+			return fmt.Errorf("checkum mismatch for blocks %d-%d: got %s, expected %s", rng.blockStart, rng.blockEnd, sum, rng.Chksum)
 		}
 	}
 
