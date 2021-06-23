@@ -13,13 +13,13 @@ For more information on the file format and use cases, please refer to the refer
 Install the package like this:
 
 ```
-go get https://github.com/holoplot/go-bmap
+go get github.com/holoplot/go-bmap/pkg/bmap
 ```
 
 And then use it in your source code.
 
 ```
-import "github.com/holoplot/pkg/bmap/go-bmap"
+import "github.com/holoplot/go-bmap/pkg/bmap"
 ```
 
 # Example
