@@ -56,7 +56,7 @@ func main() {
 		panic(err)
 	}
 
-	ow := bmap.OffsetWriterNew(outputFile, *skipFlag)
+	ow := offsetWriterNew(outputFile, *skipFlag)
 	err = r.WriteTo(ow)
 	if err != nil {
 		panic(err)
